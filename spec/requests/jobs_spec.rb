@@ -5,6 +5,14 @@ RSpec.describe Presentation::Controller::JobsController, type: :request do
     Presentation::Controller::JobsController
   end
 
+  # テスト用の依存性注入
+  before(:all) do
+    job_repository = Infrastructure::Repository::ActiveRecordJobRepository.new
+    scraping_service = Infrastructure::ExternalService::JobScrapingService.new
+    job_service = Application::Service::JobScraper::JobApplicationService.new(job_repository, scraping_service)
+    Presentation::Controller::JobsController.job_service = job_service
+  end
+
   describe 'GET /' do
     context '保存された求人がある場合' do
       let!(:saved_job) { create(:saved_job) }

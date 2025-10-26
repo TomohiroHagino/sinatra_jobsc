@@ -2,16 +2,14 @@
 module Presentation
   module Controller
     class JobsController < BaseApplication
-      configure do
-        @job_repository = Infrastructure::Repository::ActiveRecordJobRepository.new
-        @scraping_service = Infrastructure::ExternalService::JobScrapingService.new
-        @job_service = Application::Service::JobScraper::JobApplicationService.new(@job_repository, @scraping_service)
+      # アプリケーションサービスは外部から注入される
+      class << self
+        attr_accessor :job_service
       end
   
       before do
-        @job_repository ||= Infrastructure::Repository::ActiveRecordJobRepository.new
-        @scraping_service ||= Infrastructure::ExternalService::JobScrapingService.new
-        @job_service ||= Application::Service::JobScraper::JobApplicationService.new(@job_repository, @scraping_service)
+        # 外部から注入されたサービスを使用（テスト時にモックに置き換え可能）
+        @job_service = self.class.job_service
       end
   
       get '/' do
