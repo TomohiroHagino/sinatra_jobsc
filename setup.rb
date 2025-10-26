@@ -12,14 +12,14 @@ puts "接続状態: #{ActiveRecord::Base.connected?}"
 puts "\nテーブル確認..."
 if ActiveRecord::Base.connection.table_exists?('saved_jobs')
   puts "✅ saved_jobs テーブルが存在します"
-  count = Domain::JobAggregate::SavedJob.count
+  count = Domain::JobScraper::SavedJob.count
   puts "保存された求人数: #{count}"
 else
   puts "❌ saved_jobs テーブルが存在しません"
 end
 
 puts "\nサンプルデータの作成..."
-sample_job = Domain::JobAggregate::SavedJob.create!(
+sample_job = Domain::JobScraper::SavedJob.create!(
   title: "Rails エンジニア募集",
   company_name: "サンプル株式会社",
   salary_min: 100,

@@ -1,7 +1,7 @@
 # アプリケーション層（ユースケース）: 求人情報をデータベースから削除するユースケース
 module Application
   module UseCase
-    module JobAggregate
+    module JobScraper
       class DeleteJobUseCase
         def initialize(job_repository)
           @job_repository = job_repository

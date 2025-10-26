@@ -450,7 +450,7 @@ module Infrastructure
         sample_jobs = []
         
         # Findy のサンプル求人
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "Railsエンジニア募集（フルリモート可）",
           company_name: "株式会社Tech Innovations",
           salary_min: 80,
@@ -463,7 +463,7 @@ module Infrastructure
           source_site: "Findy"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "Next.js + React フロントエンドエンジニア",
           company_name: "株式会社Web Solutions",
           salary_min: 90,
@@ -476,7 +476,7 @@ module Infrastructure
           source_site: "チョクフリ"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "Laravel バックエンドエンジニア",
           company_name: "株式会社Cloud Systems",
           salary_min: 70,
@@ -489,7 +489,7 @@ module Infrastructure
           source_site: "Offers"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "フルスタックエンジニア（Rails + React）",
           company_name: "株式会社Startup Tech",
           salary_min: 100,
@@ -502,7 +502,7 @@ module Infrastructure
           source_site: "Wantedly"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "シニアRailsエンジニア",
           company_name: "株式会社Enterprise Solutions",
           salary_min: 110,
@@ -515,7 +515,7 @@ module Infrastructure
           source_site: "Indeed"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "フリーランス Railsエンジニア",
           company_name: "株式会社Freelance Hub",
           salary_min: 90,
@@ -528,7 +528,7 @@ module Infrastructure
           source_site: "ITプロパートナーズ"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "React + TypeScript フロントエンドエンジニア",
           company_name: "株式会社Modern Web",
           salary_min: 85,
@@ -541,7 +541,7 @@ module Infrastructure
           source_site: "Findy"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "PHP（Laravel）エンジニア",
           company_name: "株式会社E-Commerce Pro",
           salary_min: 75,
@@ -554,7 +554,7 @@ module Infrastructure
           source_site: "チョクフリ"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "Next.js エンジニア（グローバル対応）",
           company_name: "株式会社Global Tech",
           salary_min: 95,
@@ -567,7 +567,7 @@ module Infrastructure
           source_site: "Offers"
         )
 
-        sample_jobs << Domain::JobAggregate::Entity::JobEntity.new(
+        sample_jobs << Domain::JobScraper::Entity::JobEntity.new(
           title: "テックリード（Rails）",
           company_name: "株式会社Scale Up",
           salary_min: 120,

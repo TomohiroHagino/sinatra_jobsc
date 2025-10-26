@@ -1,6 +1,6 @@
 module Domain
   module ValueObject
-    module JobAggregate
+    module JobScraper
       class SalaryRange
         include ActiveModel::Model
         include ActiveModel::Attributes

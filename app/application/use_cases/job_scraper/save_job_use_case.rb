@@ -1,14 +1,14 @@
 # アプリケーション層（ユースケース）: 求人情報をデータベースに保存するユースケース
 module Application
   module UseCase
-    module JobAggregate
+    module JobScraper
       class SaveJobUseCase
         def initialize(job_repository)
           @job_repository = job_repository
         end
 
         def execute(job_data)
-          job = Domain::JobAggregate::Entity::JobEntity.new(job_data)
+          job = Domain::JobScraper::Entity::JobEntity.new(job_data)
           
           return { success: false, errors: job.errors.full_messages } unless job.valid?
 

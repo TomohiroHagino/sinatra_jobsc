@@ -1,14 +1,14 @@
-# アプリケーション層（ユースケース）: 条件に基づいて求人を検索するユースケース
+# アプリケーション層（ユースケース）: 保存された求人一覧を取得するユースケース
 module Application
   module UseCase
-    module JobAggregate
-      class SearchJobsUseCase
+    module JobScraper
+      class GetSavedJobsUseCase
         def initialize(job_repository)
           @job_repository = job_repository
         end
 
-        def execute(criteria)
-          jobs = @job_repository.find_by_criteria(criteria)
+        def execute
+          jobs = @job_repository.find_all
           
           {
             success: true,
