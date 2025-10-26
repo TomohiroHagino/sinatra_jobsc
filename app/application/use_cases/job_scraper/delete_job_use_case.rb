@@ -8,12 +8,13 @@ module Application
         end
 
         def execute(job_id)
+          job = @job_repository.find_by_id(job_id)
+          return { success: false, errors: ['求人情報が見つかりません'] } unless job
+          
           @job_repository.delete(job_id)
           { success: true }
-        rescue ActiveRecord::RecordNotFound
-          { success: false, error: 'Job not found' }
         rescue => e
-          { success: false, error: e.message }
+          { success: false, errors: [e.message] }
         end
       end
     end

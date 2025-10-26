@@ -51,6 +51,40 @@ bundle exec rackup
 
 ブラウザで `http://localhost:9292` にアクセスしてください。
 
+## テスト
+
+### テスト環境のセットアップ
+
+```bash
+bundle install
+```
+
+### テストの実行
+
+すべてのテストを実行:
+```bash
+bundle exec rspec
+```
+
+特定のファイルのテストを実行:
+```bash
+bundle exec rspec spec/domain/entities/job_entity_spec.rb
+```
+
+特定のテストのみ実行:
+```bash
+bundle exec rspec spec/domain/entities/job_entity_spec.rb:15
+```
+
+### テストカバレッジ
+
+以下のテストが含まれています:
+- **リクエストスペック** (`spec/requests/`): HTTPエンドポイント（ルーティング、リクエスト/レスポンス）のテスト
+- **ユースケーステスト** (`spec/application/use_cases/`): ビジネスロジックのテスト
+- **エンティティテスト** (`spec/domain/entities/`): ドメインモデルのテスト
+- **値オブジェクトテスト** (`spec/domain/value_objects/`): 値オブジェクトのテスト
+- **リポジトリテスト** (`spec/infrastructure/repositories/`): データ永続化のテスト
+
 ## 使用方法
 
 1. **求人情報の取得**: 「求人情報を取得」ボタンをクリック
@@ -78,17 +112,16 @@ app/
 │       ├── entities/      # エンティティ (JobEntity, SavedJobEntity)
 │       ├── value_objects/ # 値オブジェクト (SalaryRange)
 │       ├── repositories/  # リポジトリインターフェース (JobRepository)
-│       ├── services/      # ドメインサービス (JobDomainService)
-│       └── factories/     # ファクトリー (JobFactory)
+│       └── services/      # ドメインサービス (JobDomainService)
 ├── application/           # アプリケーション層
-│   └── services/          # アプリケーションサービス (JobApplicationService)
-│       └── use_cases/     # ユースケース (ScrapeJobsUseCase, SaveJobUseCase等)
-│           └── job_scpraper/
-│               ├── scrape_jobs_use_case.rb
-│               ├── save_job_use_case.rb
-│               ├── get_saved_jobs_use_case.rb
-│               ├── delete_job_use_case.rb
-│               └── search_jobs_use_case.rb
+│   ├── services/          # アプリケーションサービス (JobApplicationService)
+│   └── use_cases/         # ユースケース (ScrapeJobsUseCase, SaveJobUseCase等)
+│       └── job_scraper/
+│           ├── scrape_jobs_use_case.rb
+│           ├── save_job_use_case.rb
+│           ├── get_saved_jobs_use_case.rb
+│           ├── delete_job_use_case.rb
+│           └── search_jobs_use_case.rb
 ├── infrastructure/        # インフラストラクチャ層
 │   ├── models/            # ActiveRecordモデル (SavedJob)
 │   ├── repositories/      # リポジトリ実装 (ActiveRecordJobRepository)
@@ -97,6 +130,13 @@ app/
     ├── controllers/       # コントローラー (JobsController)
     ├── views/             # ビューテンプレート (ERB)
     └── public/            # 静的ファイル
+config/                    # 設定ファイル
+spec/                      # テストファイル
+├── factories/            # FactoryBotファクトリー
+├── requests/             # リクエストスペック（HTTPエンドポイントのテスト）
+├── application/          # アプリケーション層のテスト
+├── domain/               # ドメイン層のテスト
+└── infrastructure/       # インフラ層のテスト
 ```
 
 ## 注意事項

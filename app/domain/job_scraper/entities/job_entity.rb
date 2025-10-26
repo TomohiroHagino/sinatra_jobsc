@@ -1,3 +1,4 @@
+# ドメイン層（エンティティ）: 求人情報を表現するエンティティ。フレームワーク非依存
 module Domain
   module JobScraper
     module Entity

@@ -19,3 +19,10 @@ group :development do
   gem 'rerun'
   gem 'pry'
 end
+
+group :test do
+  gem 'rspec', '~> 3.12'
+  gem 'rack-test', '~> 2.1'
+  gem 'factory_bot', '~> 6.2'
+  gem 'database_cleaner-active_record', '~> 2.1'
+end

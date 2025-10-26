@@ -1,12 +1,8 @@
 module Domain
-  module ValueObject
-    module JobScraper
+  module JobScraper
+    module ValueObject
       class SalaryRange
-        include ActiveModel::Model
-        include ActiveModel::Attributes
-
-        attribute :min, :integer
-        attribute :max, :integer
+        attr_reader :min, :max
 
         def initialize(min: nil, max: nil)
           @min = min
@@ -14,18 +10,23 @@ module Domain
         end
 
         def to_s
-          return "#{min}万円〜" if min && !max
-          return "#{max}万円以下" if max && !min
-          return "#{min}万円〜#{max}万円" if min && max
+          return "#{@min}万円〜" if @min && !@max
+          return "#{@max}万円以下" if @max && !@min
+          return "#{@min}万円〜#{@max}万円" if @min && @max
           "要相談"
         end
 
         def includes?(amount)
           return false unless amount
-          return amount >= min if min && !max
-          return amount <= max if max && !min
-          return amount >= min && amount <= max if min && max
+          return amount >= @min if @min && !@max
+          return amount <= @max if @max && !@min
+          return amount >= @min && amount <= @max if @min && @max
           true
+        end
+
+        def valid?
+          return true if @min.nil? || @max.nil?
+          @min <= @max
         end
       end
     end

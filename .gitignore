@@ -5,6 +5,7 @@
 db/*.sqlite3
 db/*.sqlite3-shm
 db/*.sqlite3-wal
+db/test.sqlite3
 
 # ログファイル
 *.log
@@ -60,6 +61,7 @@ coverage/
 
 # RSpec
 .rspec_status
+spec/examples.txt
 
 # Byebug
 .byebug_history
