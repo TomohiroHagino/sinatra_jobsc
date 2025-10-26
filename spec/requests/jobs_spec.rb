@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Jobs API', type: :request do
+RSpec.describe Presentation::Controller::JobsController, type: :request do
   def app
     Presentation::Controller::JobsController
   end
