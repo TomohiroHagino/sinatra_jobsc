@@ -2,16 +2,16 @@
 module Infrastructure
   module Repository
     class ActiveRecordJobRepository < Domain::Repository::JobScraper::JobRepository
-        def find_all
+      def find_all
         Infrastructure::Model::SavedJob.active.order(created_at: :desc).map(&:to_domain_entity)
       end
 
-        def find_by_id(id)
+      def find_by_id(id)
         saved_job = Infrastructure::Model::SavedJob.find_by(id: id)
         saved_job&.to_domain_entity
       end
 
-        def save(job)
+      def save(job)
         if job.id
           update_existing_job(job)
         else
@@ -19,11 +19,11 @@ module Infrastructure
         end
       end
 
-        def delete(id)
+      def delete(id)
         Infrastructure::Model::SavedJob.find(id).destroy
       end
 
-        def find_by_criteria(criteria)
+      def find_by_criteria(criteria)
         query = Infrastructure::Model::SavedJob.active
 
         query = query.where('salary_min >= ? OR salary_max >= ?', criteria[:min_salary], criteria[:min_salary]) if criteria[:min_salary]
@@ -36,7 +36,7 @@ module Infrastructure
 
       private
 
-        def update_existing_job(job)
+      def update_existing_job(job)
         saved_job = Infrastructure::Model::SavedJob.find(job.id)
         saved_job.update!(
           title: job.title,
@@ -54,7 +54,7 @@ module Infrastructure
         saved_job.to_domain_entity
       end
 
-        def create_new_job(job)
+      def create_new_job(job)
         saved_job = Infrastructure::Model::SavedJob.create!(
           title: job.title,
           company_name: job.company_name,
