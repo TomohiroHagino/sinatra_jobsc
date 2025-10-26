@@ -1,0 +1,73 @@
+# SQLite データベース
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+db/*.sqlite3
+db/*.sqlite3-shm
+db/*.sqlite3-wal
+
+# ログファイル
+*.log
+log/*.log
+
+# 一時ファイル
+tmp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# 環境変数・設定ファイル
+.env
+.env.local
+.env.*.local
+config/secrets.yml
+
+# Ruby
+*.gem
+*.rbc
+.bundle
+vendor/bundle/
+.ruby-version
+.ruby-gemset
+
+# RubyMine
+.idea/
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# サムネイル
+._*
+
+# エディタバックアップ
+\#*\#
+.#*
+
+# Selenium/Chromedriver
+chromedriver
+geckodriver
+*.log
+
+# カバレッジレポート
+coverage/
+.simplecov
+
+# RSpec
+.rspec_status
+
+# Byebug
+.byebug_history
+
+# IRB履歴
+.irb_history
+
+# YARD
+.yardoc
+doc/
+
