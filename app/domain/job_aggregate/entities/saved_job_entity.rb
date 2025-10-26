@@ -1,6 +1,6 @@
 # ドメイン層（エンティティ）: 永続化された求人情報を表現するエンティティ。フレームワーク非依存
 module Domain
-  module JobScraper
+  module JobAggregate
     module Entity
       class SavedJobEntity
         include ActiveModel::Model
@@ -42,7 +42,7 @@ module Domain
         end
 
         def to_job
-          Domain::JobScraper::Entity::JobEntity.new(
+          Domain::JobAggregate::Entity::JobEntity.new(
             id: id,
             title: title,
             company_name: company_name,

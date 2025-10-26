@@ -14,7 +14,7 @@ module Infrastructure
       scope :remote_work_available, -> { where(remote_work: true) }
 
       def to_domain_entity
-        Domain::JobScraper::Entity::SavedJobEntity.new(
+        Domain::JobAggregate::Entity::SavedJobEntity.new(
           id: id,
           title: title,
           company_name: company_name,

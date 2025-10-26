@@ -1,7 +1,7 @@
 # アプリケーション層（ユースケース）: 外部サイトから求人をスクレイピングするユースケース
 module Application
   module UseCase
-    module JobScraper
+    module JobAggregate
       class ScrapeJobsUseCase
         def initialize(scraping_service)
           @scraping_service = scraping_service

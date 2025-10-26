@@ -1,7 +1,7 @@
 # ドメイン層（サービス）: 複数のエンティティにまたがるビジネスロジックを実装するドメインサービス
 module Domain
   module Service
-    module JobScraper
+    module JobAggregate
       class JobDomainService
         def initialize(job_repository)
           @job_repository = job_repository

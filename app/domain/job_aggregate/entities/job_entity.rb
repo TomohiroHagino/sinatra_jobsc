@@ -1,5 +1,5 @@
 module Domain
-  module JobScraper
+  module JobAggregate
     module Entity
       class JobEntity
         include ActiveModel::Model

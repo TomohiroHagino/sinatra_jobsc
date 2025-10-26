@@ -1,7 +1,7 @@
 # インフラ層（リポジトリ）: ActiveRecordを使用してデータベースから求人データを取得・保存するリポジトリ実装
 module Infrastructure
   module Repository
-    class ActiveRecordJobRepository < Domain::Repository::JobScraper::JobRepository
+    class ActiveRecordJobRepository < Domain::Repository::JobAggregate::JobRepository
         def find_all
         Infrastructure::Model::SavedJob.active.order(created_at: :desc).map(&:to_domain_entity)
       end

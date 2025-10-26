@@ -1,7 +1,7 @@
 # ドメイン層（リポジトリインターフェース）: 永続化に関するインターフェースを定義する抽象クラス
 module Domain
   module Repository
-    module JobScraper
+    module JobAggregate
       class JobRepository
         def find_all
           raise NotImplementedError, "Subclasses must implement find_all"

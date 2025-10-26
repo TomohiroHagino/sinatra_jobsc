@@ -1,6 +1,6 @@
 # ドメイン層（ファクトリ）: エンティティの作成を隠蔽し、複雑な生成ロジックをカプセル化するファクトリ
 module Domain
-  module JobScraper
+  module JobAggregate
     module Factory
       class JobFactory
         def self.create_from_scraped_data(data)

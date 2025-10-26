@@ -5,13 +5,13 @@ module Presentation
       configure do
         @job_repository = Infrastructure::Repository::ActiveRecordJobRepository.new
         @scraping_service = Infrastructure::ExternalService::JobScrapingService.new
-        @job_service = Application::Service::JobScraper::JobApplicationService.new(@job_repository, @scraping_service)
+        @job_service = Application::Service::JobAggregate::JobApplicationService.new(@job_repository, @scraping_service)
       end
   
       before do
         @job_repository ||= Infrastructure::Repository::ActiveRecordJobRepository.new
         @scraping_service ||= Infrastructure::ExternalService::JobScrapingService.new
-        @job_service ||= Application::Service::JobScraper::JobApplicationService.new(@job_repository, @scraping_service)
+        @job_service ||= Application::Service::JobAggregate::JobApplicationService.new(@job_repository, @scraping_service)
       end
   
       get '/' do
