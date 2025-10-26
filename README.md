@@ -26,7 +26,7 @@ DDD+オニオンアーキテクチャで構築されたSinatraアプリケーシ
 - **アーキテクチャ**: DDD + オニオンアーキテクチャ
 - **データベース**: SQLite3
 - **ORM**: ActiveRecord
-- **スクレイピング**: Nokogiri + HTTParty
+- **スクレイピング**: Selenium (Chrome WebDriver)
 - **UI**: Bootstrap 5 + Font Awesome
 
 ## セットアップ
@@ -74,22 +74,29 @@ bundle exec rackup
 ```
 app/
 ├── domain/                # ドメイン層
-│   ├── entities/          # エンティティ (Job, SavedJob)
-│   ├── value_objects/     # 値オブジェクト (SalaryRange)
-│   ├── repositories/      # リポジトリインターフェース
-│   ├── services/         # ドメインサービス (JobDomainService)
-│   └── factories/        # ファクトリー (JobFactory)
+│   └── job_scraper/
+│       ├── entities/      # エンティティ (JobEntity, SavedJobEntity)
+│       ├── value_objects/ # 値オブジェクト (SalaryRange)
+│       ├── repositories/  # リポジトリインターフェース (JobRepository)
+│       ├── services/      # ドメインサービス (JobDomainService)
+│       └── factories/     # ファクトリー (JobFactory)
 ├── application/           # アプリケーション層
-│   ├── services/         # アプリケーションサービス
-│   ├── use_cases/        # ユースケース (ScrapeJobsUseCase, SaveJobUseCase等)
-│   └── dtos/             # データ転送オブジェクト (JobDto, JobSearchCriteriaDto)
-├── infrastructure/       # インフラストラクチャ層
-│   ├── repositories/     # リポジトリ実装 (ActiveRecordJobRepository)
-│   └── external_services/ # 外部サービス (JobScrapingService)
-└── presentation/         # プレゼンテーション層
-    ├── controllers/      # コントローラー (JobsController)
-    ├── views/            # ビューテンプレート
-    └── public/           # 静的ファイル
+│   └── services/          # アプリケーションサービス (JobApplicationService)
+│       └── use_cases/     # ユースケース (ScrapeJobsUseCase, SaveJobUseCase等)
+│           └── job_scpraper/
+│               ├── scrape_jobs_use_case.rb
+│               ├── save_job_use_case.rb
+│               ├── get_saved_jobs_use_case.rb
+│               ├── delete_job_use_case.rb
+│               └── search_jobs_use_case.rb
+├── infrastructure/        # インフラストラクチャ層
+│   ├── models/            # ActiveRecordモデル (SavedJob)
+│   ├── repositories/      # リポジトリ実装 (ActiveRecordJobRepository)
+│   └── external_services/ # 外部サービス (JobScrapingService, SeleniumScrapingService)
+└── presentation/          # プレゼンテーション層
+    ├── controllers/       # コントローラー (JobsController)
+    ├── views/             # ビューテンプレート (ERB)
+    └── public/            # 静的ファイル
 ```
 
 ## 注意事項
