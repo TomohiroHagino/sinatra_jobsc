@@ -19,18 +19,29 @@ module Presentation
 
       get '/scrape' do
         @scraped_jobs = @job_service.scrape_and_get_jobs
-        erb :scraped_jobs
+        erb :scrape
       end
 
       post '/jobs' do
         result = @job_service.save_job(params[:job])
         
-        if result[:success]
-          redirect '/?saved=true'
+        # AJAXリクエストの場合はJSONを返す
+        if request.xhr?
+          content_type :json
+          if result[:success]
+            { success: true, message: '求人情報を保存しました！' }.to_json
+          else
+            { success: false, message: 'エラーが発生しました', errors: result[:errors] }.to_json
+          end
         else
-          @errors = result[:errors]
-          @saved_jobs = @job_service.get_saved_jobs
-          erb :index
+          # 通常のリクエストの場合は従来通りリダイレクト
+          if result[:success]
+            redirect '/?saved=true'
+          else
+            @errors = result[:errors]
+            @saved_jobs = @job_service.get_saved_jobs
+            erb :index
+          end
         end
       end
 
