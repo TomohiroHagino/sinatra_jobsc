@@ -6,22 +6,22 @@ module Presentation
       class << self
         attr_accessor :job_service
       end
-  
+
       before do
         # 外部から注入されたサービスを使用（テスト時にモックに置き換え可能）
         @job_service = self.class.job_service
       end
-  
+
       get '/' do
         @saved_jobs = @job_service.get_saved_jobs
         erb :index
       end
-  
+
       get '/scrape' do
         @scraped_jobs = @job_service.scrape_and_get_jobs
         erb :scraped_jobs
       end
-  
+
       post '/jobs' do
         result = @job_service.save_job(params[:job])
         
@@ -33,7 +33,7 @@ module Presentation
           erb :index
         end
       end
-  
+
       delete '/jobs/:id' do
         result = @job_service.delete_job(params[:id])
         
